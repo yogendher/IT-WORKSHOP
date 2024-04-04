@@ -1,1 +1,233 @@
+GREP COMMAND IN UINX:
+-c: This prints only a count of the lines that match a pattern
+-h: Display the matched lines, but do not display the filenames.
+-l: Displays list of a filenames only.
+-n: Display the matched lines and their line numbers.
+-v: This prints out all the lines that do not matches the pattern
+-e : Specifies expression with this option. Can use multiple times.
+-o :Print only the matched parts of a matching line, with each such part on a
+separate output line.
+
+
+SED COMMAND IN UNIX:
+$cat > geekfile.txt
+
+Replacing the nth occurrence of a pattern in a line :
+Use the /1, /2 etc flags to replace the first, second occurrence of a
+pattern in a line. The below command replaces the second
+occurrence of the word “unix” with “linux” in a line.
+$sed 's/unix/linux/2' geekfile.txt
+Output:
+unix is great os. linux is opensource. unix is free os.
+learn operating system.
+unix linux which one you choose.
+unix is easy to learn.linux is a multiuser os.Learn unix .unix is a
+powerful.
+
+
+Sed ‘s/hello/HELLO/g’ file1.txt
+Sed ‘2 s/hello/HELLO/2g’ file1.txt
+Sed ‘2d’ file1.txt : removing second line of the paragraph
+Sed ‘2,4d’ file1.txt : removing second line and 4 th line of theparagraph
+Sed ‘/core/d’ file1.txt : removing the total line of the core
+$sed '$d' file1.txt
+$sed '2,$ s/unix/linux/' file1.tx
+
+
+SORT COMMAND IN UNIX:
+-o: Specifies an output file for the sorted data.
+Functionally equivalent to redirecting output to a file.
+-r: Sorts data in reverse order (descending).
+-n: Sorts a file numerically (interprets data as numbers).
+-nr: Sorts a file with numeric data in reverse order. Combines -n and -r options.
+-k: Sorts a table based on a specific column number.
+-c: Checks if the file is already sorted and reports anydisorder.
+-u: Sorts and removes duplicate lines, providing a uniquesorted list.
+-M: Sorts by month names.
+
+
+CHOMD COMMAND:
+The following operators can be used with the symbolic mode:
+Operators
+`+`
+`-`
+`=`
+Definition:
+Add permissions
+Remove permissions
+Set the permissions to the specified values
+The following letters that can be used in symbolic mode:
+Letters
+`r`
+`w`
+`x`
+Definition
+Read permission
+Write permission
+Execute permissionThe following Reference that are used:
+Reference Class or categories of users
+u
+Owner
+g
+Group
+o
+Others
+a
+All (owner,groups,others)
+Octal mode:
+It is also a method for specifying permissions. In this method we
+specify permission using three-digit number. Where..
+First digit specify the permission for Owner.
+Second digit specify the permission for Group.
+Third digit specify the permission for Others. The digits
+NOTE: The digits are calculated by adding the values of the
+individual permissions.
+Value
+4
+2
+1
+Permission
+Read Permission
+Write Permission
+Execute Permission
+- r
+-w
+-x
+Grant execute permission to the owner:
+chmod u+x filename
+chmod u-x filename
+Remove write permission for group and others:
+chmod go-w filename
+Try it:
+chmod u+x filename
+Add execute permission for the owner
+chmod go-w filename Remove write permission for group
+chmod a=rwx filename Set read, write, and execute permissions
+chmod a=w filename
+chmod ugo=w filename
+
+
+AWK command in Unix:
+Consider the following text file as the input file for all cases below:
+$cat > employee.txt
+ajay manager account 45000
+sunil clerk account 25000
+varun manager sales 50000
+amit manager account 47000
+tarun peon sales 15000
+deepak clerk sales 23000
+sunil peon sales 13000
+satvik director purchase 80000
+Print the lines which match the given pattern.
+$ awk '/manager/ {print}' employee.txt
+Output:
+ajay manager account 45000
+varun manager sales 50000
+amit manager account 47000
+
+
+Splitting a Line Into Fields;
+$ awk '{print $1,$4}' employee.txt
+• Use of NR built-in variables (Display Line Number)
+$ awk '{print NR,$0}' employee.txt
+• To return the second column/item from file1.txt:
+$ awk '{print $2}' file1.txt
+• To count the lines in a file:
+$ awk '{ print NR }' file.txt
+awk free -M
+• awk ‘/Mem/{print}/’ free -m
+• awk ‘NR==2{printNR,$0}’ free -m
+
+
+
+SHUTDOWN COMMAND:
+shutdown [options] [time] [message]
+shutdown -r +5 reboot
+Examples:
+$ shutdown -H
+$shutdown -P
+$ shutdown -r now
+$ shutdown -r +5
+$ sudo shutdown 15:00
+$ sudo shutdown +10
+$ sudo shutdown -c
+r : Requests that the system be rebooted after it has been brought
+down.
+-h : Requests that the system be either halted or powered off after it
+has been brought down, with the choice as to which left up to the
+system.
+-H : Requests that the system be halted after it has been brought
+down.
+-P : Requests that the system be powered off after it has been
+brought down.
+-c : Cancels a running shutdown. TIME is not specified with this
+option, the first argument is MESSAGE.
+-k : Only send out the warning messages and disable logins, do not
+actually bring the system down.
+
+
+SSH :
+ssh [username]@[hostname or IP address
+sudo yum install openssh-clients openssh-server
+• This command is used to connect to a remote server.
+ssh [username]@[hostname or IP address]
+ex:
+ssh user@example.com
+• ssh-copy-id: This command is used to copy your SSH public
+key to a remote server's authorized_keys file, enabling
+passwordless SSH login.
+ssh-copy-id [username]@[hostname or IP address]
+ex:
+ssh-copy-id user@example.com
+• ssh-add: This command is used to add private key identities to
+the SSH authentication agent.
+ssh-add [path to private key]
+ex:
+ssh-add ~/.ssh/id_rsa
+• This command connects to the remote server using port 2222.
+Adjust the port number as needed
+ssh -p 2222 username@remote_server_ip
+
+
+
+FTS COMMANDS:
+1.cd Changes the working directory on the remote host
+2.close
+Closes the FTP connection
+3.quit
+Quits FTP
+4.pwd
+displays the current working Directory on the rem
+remote host
+5.dis or ls Provides a Directory Listing of the current working
+directory
+help
+Displays a list of all client FTP commands
+6.
+7. remotehelp
+Displays a list of all server FTP commands
+8.typeAllows the user to specify the file type
+9.structspecifies the files structure
+
+
+Service:
+Starting and Stopping Services
+systemctl start [service]
+• Enabling Services
+systemctl enable [service]
+If we want to enable our firewall service.
+systemctl enable firewalld
+• Disabling Services
+systemctl disable [service]
+If we want to disable our firewall service.
+systemctl disable firewalld
+Restarting and Reloading Services
+• Restarting Services
+systemctl restart [service]
+If we want to restart our SSH service.
+systemctl restart sshd
+• Reloading Services
+systemctl reload [service]
+If we want to reload our Apache service.
+systemctl reload httpd.
 
